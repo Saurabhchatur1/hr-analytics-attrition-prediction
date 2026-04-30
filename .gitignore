@@ -11,8 +11,7 @@ env/
 
 data/processed/*.csv
 
-# Models (regenerate via pipeline)
-models/*.pkl
+
 
 # Logs
 logs/
