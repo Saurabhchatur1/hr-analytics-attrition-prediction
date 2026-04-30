@@ -121,12 +121,6 @@ streamlit run app.py
 
 ---
 
-## 🐳 Docker Setup
-
-```bash
-docker build -t hr-analytics .
-docker run -p 8501:8501 hr-analytics
-```
 
 ---
 
