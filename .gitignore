@@ -8,7 +8,7 @@ env/
 .env
 
 # Data (large files)
-data/raw/*.csv
+
 data/processed/*.csv
 
 # Models (regenerate via pipeline)
