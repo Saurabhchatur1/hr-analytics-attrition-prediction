@@ -99,12 +99,11 @@ Features:
 
 ---
 
-## 📸 Dashboard Screenshots
+### 🔹 Engagement Overview
+![Engagement Overview](image/Engagement_Overview.png)
 
-### 🔹 Main Dashboard
-
-![Dashboard](images/Engement_Overview.png)
-
+### 🔹 Burnout Risk
+![Burnout Risk](image/Burnout_Risk1.png)
 
 ---
 
@@ -153,5 +152,7 @@ docker run -p 8501:8501 hr-analytics
 ## 👨‍💻 Author
 
 **Saurabh Chatur**
+
 B.Tech Data Science
+
 Aspiring Data Analyst / Data Scientist
