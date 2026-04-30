@@ -102,15 +102,18 @@ Features:
 ### 🔹 Engagement Overview
 ![Engagement Overview](image/Engagement_Overview.png)
 
+💡 Insight: Employees with lower engagement scores show higher attrition probability.
+
 ### 🔹 Burnout Risk
 ![Burnout Risk](image/Burnout_Risk1.png)
 
+💡 Insight: High burnout scores are strongly linked with high attrition probability.
 ---
 
 ## 🚀 How to Run Locally
 
 ```bash
-git clone https://github.com/your-username/hr-analytics-project.git
+git clone https://github.com/Saurabhchatur1/hr-analytics-attrition-prediction.git
 cd hr-analytics-project
 pip install -r requirements.txt
 streamlit run app.py
