@@ -1,0 +1,86 @@
+project:
+  name: "HR Analytics Platform"
+  version: "1.0.0"
+  description: "Employee Engagement, Satisfaction, and Burnout Diagnostic System"
+
+paths:
+  raw_data: "data/raw/HR_Employee_Attrition.csv"
+  processed_data: "data/processed/hr_processed.csv"
+  models_dir: "models/"
+  reports_dir: "reports/"
+
+data:
+  target_column: "Attrition"
+  ordinal_columns:
+    - "JobSatisfaction"
+    - "EnvironmentSatisfaction"
+    - "RelationshipSatisfaction"
+    - "WorkLifeBalance"
+    - "JobInvolvement"
+    - "PerformanceRating"
+  ordinal_scale: [1, 2, 3, 4]
+  categorical_columns:
+    - "BusinessTravel"
+    - "Department"
+    - "EducationField"
+    - "Gender"
+    - "JobRole"
+    - "MaritalStatus"
+    - "OverTime"
+  drop_columns:
+    - "EmployeeCount"
+    - "EmployeeNumber"
+    - "Over18"
+    - "StandardHours"
+
+engagement_index:
+  components:
+    - name: "JobInvolvement"
+      weight: 0.30
+    - name: "JobSatisfaction"
+      weight: 0.30
+    - name: "EnvironmentSatisfaction"
+      weight: 0.20
+    - name: "RelationshipSatisfaction"
+      weight: 0.20
+  method: "weighted"  # Options: weighted, pca
+
+burnout:
+  rules:
+    overtime_penalty: true
+    wlb_threshold: 2
+    travel_weights:
+      "Non-Travel": 0
+      "Travel_Rarely": 1
+      "Travel_Frequently": 2
+  risk_thresholds:
+    low: 0.33
+    medium: 0.66
+    high: 1.0
+
+models:
+  random_state: 42
+  test_size: 0.2
+  cv_folds: 5
+  attrition:
+    logistic_regression:
+      C: [0.01, 0.1, 1, 10]
+      solver: ["liblinear"]
+      max_iter: [1000]
+    random_forest:
+      n_estimators: [100, 200]
+      max_depth: [5, 10, null]
+      min_samples_split: [2, 5]
+    xgboost:
+      n_estimators: [100, 200]
+      max_depth: [3, 5, 7]
+      learning_rate: [0.01, 0.1]
+      subsample: [0.8, 1.0]
+  smote:
+    enabled: true
+    sampling_strategy: "auto"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
+  file: "logs/hr_analytics.log"
